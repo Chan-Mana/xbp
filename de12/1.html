@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<div class="bg_pattern Paper_v2"></div>
+<style>.bg_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: -1;
+  }
+  .Paper_v2 {
+    background-image:
+      repeating-linear-gradient(to bottom,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
+    
+      repeating-linear-gradient(to right,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+  }
+  </style>
+    <style>*{text-align: center;}</style>
+    <style>h2 {
+        color: #505050;/*文字色*/
+        padding: 0.5em;/*文字周りの余白*/
+        display: inline-block;/*おまじない*/
+        line-height: 1.3;/*行高*/
+        background: #dbebf8;/*背景色*/
+        vertical-align: middle;
+        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
+      }
+      
+      h2:before {
+        content: '●';
+        color: white;
+        margin-right: 8px;
+      }</style>
+      <style>*{font-size: large;}</style>
+      <style>h1{font-size: x-large};</style>
+      <style>h2{font-size: larger};</style>
+    <title>第1回</title>
+</head>
+<body>
+<h1 style="text-align: center;">Assignment No.1</h1>
+<div><h2>gitについて</h2>
+    <h3>gitとは？</h3>
+あるデータを編集している際に、修正や更新を繰り返したことにより同じようなデータが増え、<br>
+<strong>どのデータを編集すれば良いのかわからなくなってしまうことがあります。</strong><br>
+<br>
+ </div>
+ <div>
+    <img src="./images/スクリーンショット 2024-09-24 19.40.43.jpg" width="30%"><br></div>
+    <br>
+ <div>そのような問題を解決するために生まれたのが<strong>git</strong>です。</div><br>
+
+<div>gitとは代表的な<strong>分散型バージョン管理システム</strong>のことであり、ファイルのバージョンを管理しています。<br>
+    gitを使用していれば、仮に上書きされた内容に不備があってもファイルのバージョンは管理されているため、<br>
+    簡単に元へ戻すことができます。<br><br>
+要は、<strong>「変更履歴が残っているためいつでも任意のバージョンへ戻せる」</strong>ということです。<br></div>
+<br>
+<div><img src="./images/2024-09-24 20.38の画像.jpg" width="30%"></div>
+<br>
+<div>その他の利点は以下のことです。<br>
+    <br>
+   変更履歴の<strong>共有が安易になる</strong><br>
+    共同開発を<strong>効率的に行える</strong>
+</ul></div><br>
+<h3>gitを使う上での基本用語</h3>
+<div><img src="./images/IMG_0832.jpg" width="30%">
+<br>※リポジトリ・・・ファイルや変更履歴を保存するデータベース</div><br>
+
+<div>
+   <a href="https://www.kagoya.jp/howto/it-glossary/develop/git/" target="_blank">参考文献<br></a>（カゴヤのサーバー研究室 【入門】Gitとは？できることや使い方、GitHubとの違いをわかりやすく解説）</div>
+<br>
+<br>
+<div><h2>htmlについて</h2>
+<h3>htmlとは？</h3>
+htmlとは<strong>「ハイパー・テキスト・マークアップ・ランゲージ」</strong>の略であり、Webページを制作するためのマークアップ言語です。<br>
+<strong>「タグ・要素・属性」</strong>の3つで構成されており、それぞれに役割があります。<br>
+Webページの見た目は基本的に、<strong>htmlとCSS</strong>（色や文字サイズなどの装飾を設定する言語）によって作られています。<br>
+<br>※マークアップ言語とは、テキスト情報の構成（タイトル・段落など）や役割をコンピュータが構造的に理解できるようにするための言語を意味します。</div>
+<br><div>
+<h3><strong>タグ</strong></h3>
+htmlの記述に意味を与える印のこと
+<h3><strong>要素</strong></h3>
+Webページを構成するテキスト情報のかたまりを指す
+<h3><strong>属性</strong></h3>
+個々のタグに特定の性質や動作を与える記述のこと
+</div><br>
+<div>
+<a href="https://schoo.jp/matome/article/1635" target="_blank">参考文献</a><br>
+(HTMLとは？初心者向けに基礎知識を分かりやすく解説)</div>
+<br>
+<br>
+</body>
+</html>
