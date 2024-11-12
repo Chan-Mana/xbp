@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<div class="bg_pattern Paper_v2"></div>
+<style>.bg_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: -1;
+  }
+  .Paper_v2 {
+    background-image:
+      repeating-linear-gradient(to bottom,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
+    
+      repeating-linear-gradient(to right,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+  }
+  </style>
+    <style>*{text-align: center;}</style>
+    <style>h2 {
+        color: #505050;/*文字色*/
+        padding: 0.5em;/*文字周りの余白*/
+        display: inline-block;/*おまじない*/
+        line-height: 1.3;/*行高*/
+        background: #dbebf8;/*背景色*/
+        vertical-align: middle;
+        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
+      }
+      
+      h2:before {
+        content: '●';
+        color: white;
+        margin-right: 8px;
+      }</style>
+      <style>*{font-size: large;}</style>
+      <style>h1{font-size: x-large};</style>
+      <style>h2{font-size: larger};</style>
+    <title>可能性の模索</title>
+</head>
+<body>
+<h1>Assignment No.4</h1>
+<h2>歌詞翻訳</h2>
+<div>曲名、アーティスト名を入力すると翻訳された歌詞が表示されるというもの。<br>
+  普通に歌詞を調べるだけでも使えます。<br>
+参考：ChatGPT、グループメンバー</div><br>
+<h2>ソースコード</h2>
+<div><pre><code>
+  import lyricsgenius
+from googletrans import Translator
+
+# Genius APIのトークンを設定
+genius = lyricsgenius.Genius("あなたのGeniusAPIトークン")
+
+# 曲名を入力
+song_title = input("曲名を入力してください: ")
+artist_name = input("アーティスト名を入力してください: ")
+
+# 歌詞を取得
+song = genius.search_song(song_title, artist_name)
+
+if song:
+    lyrics = song.lyrics
+    print("\n歌詞を取得しました:\n", lyrics)
+
+    # 翻訳の準備
+    translator = Translator()
+    translated_lyrics = translator.translate(lyrics, src='en', dest='ja')
+
+    print("\n日本語に翻訳された歌詞:\n", translated_lyrics.text)
+else:
+    print("歌詞が見つかりませんでした。")
+</code></pre></div>
+</body>
+</html>
