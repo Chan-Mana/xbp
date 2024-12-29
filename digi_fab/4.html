@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<div class="bg_pattern Paper_v2"></div>
+<style>.bg_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: -1;
+  }
+  .Paper_v2 {
+    background-image:
+      repeating-linear-gradient(to bottom,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
+    
+      repeating-linear-gradient(to right,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+  }
+  </style>
+    <style>*{text-align: center;}</style>
+    <style>h2 {
+        color: #505050;/*文字色*/
+        padding: 0.5em;/*文字周りの余白*/
+        display: inline-block;/*おまじない*/
+        line-height: 1.3;/*行高*/
+        background: #dbebf8;/*背景色*/
+        vertical-align: middle;
+        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
+      }
+      
+      h2:before {
+        content: '●';
+        color: white;
+        margin-right: 8px;
+      }</style>
+      <style>*{font-size: large;}</style>
+      <style>h1{font-size: x-large};</style>
+      <style>h2{font-size: larger};</style>
+    <title>最終プロジェクト</title>
+</head>
+<h1>最終プロジェクト</h1>
+<h2>はじめの一歩</h2>
+<div>今回は日常生活の中で普通に使えるものを作りたいと考えていた。<br>
+  そこで思いついたのが<strong>スピーカーである</strong>。<br>
+音楽は自分の生活には欠かせないものなので、スピーカーを作れば毎日使えそうだ。<br>
+とりあえず思いつきだけで作ってみる。</div>
+<br>
+<h2>材料/機材</h2>
+<div>材料：<strong>2.5mm MDFボードと接着剤（自分はアロンアルファ）のみ</strong><br>
+使用機材：レーザー加工機</div>
+<br>
+<h2>構造の話</h2>
+<div>オーディオに詳しい人ならあれ？と思った人もいるかもしれない。<br>
+  スピーカーを作るというのに<strong>材料にコーンやコードがない</strong>ということだ。<br>
+  スピーカーといえば3.5mmオーディオジャックやUSBを繋いで鳴らすものが一般的だが、<br>
+そんなたいそうなものを作る技術はない。<br>
+<br>
+ここでのキーワードは<strong>音の反響</strong>である。<br>
+<strong>囲われた空間で音を鳴らすと響いて大きく聞こえる。</strong>この仕組みを利用して作っていく。<br>
+バイクがトンネルに入るとうるさく聞こえるのと同じ原理だ。<br>
+</div>
+<br>
+<h2>データ作り</h2>
+<br>
+<div><strong>①正面/裏面</strong><br>
+正面と裏面は同じデータを使う。<strong>このパーツは２つ必要。</strong><br>
+くり抜いた部品は後で再利用する。音が出る穴の数は適当。<br>
+<a href="./files/正面.stl">正面/裏面</a><br>
+<br>
+<img src="./images/正面.png" width="45%"></div>
+<br>
+<div><strong>②天面</strong><br>
+この穴にスマホを差し込むことになる。<br>
+<a href="./files/天面.stl">天面</a><br>
+<br>
+<img src="./images/天面.png" width="45%"></div>
+<br>
+<div><strong>③側面</strong><br>
+<strong>このパーツも２つ必要。</strong><br>
+<a href="./files/サイド.stl">側面</a><br>
+<br>
+<img src="./images/サイド.png" width="45%"></div>
+<br>
+<div><strong>④底面</strong><br>
+<a href="./files/底面.stl">底面</a><br>
+<br>
+<img src="./images/底.png" width="45%"></div>
+<br>
+<h2>いざカット</h2>
+<div>データを元にカットしてできた部品たち<br>
+<br>
+<img src="./images/部品.jpeg" width="45%"><br>
+<br>
+※最終的に使わなかった部品もある</div>
+<br>
+<h2>組み立て</h2>
+<div>出来上がった部品を組み立てていく<br>
+  <br>
+こんなふうに接着して<br>
+<img src="./images/内部.jpeg" width="45%"><br>
+<br>
+最後に蓋をして<br>
+<img src="./images/最後.jpeg" width="45%"><br>
+<br>
+<strong>完成</strong><br>
+<img src="./images/完成.jpeg" width="45%"><br>
+<br>
+MDF素材がおしゃれな雰囲気でいい感じ。<br>
+<br>
+<h2>問題と解決</h2><br>
+早速使ってみるが、<strong>ここで問題が発生する。</strong><br>
+支えがないと、スマホの<strong>重みに耐えられず</strong>に後ろに倒れてしまうのだ。<br>
+<br>
+ここで急遽、端材を使って<strong>つっかえ棒</strong>を作ることにした。<br>
+<br>
+<img src="./images/つっかえ棒.jpeg" width="45%"><br>
+<br>
+最終的にこうなった。<strong>びくともしないくらい安定するようになった。</strong><br>
+<br>
+<img src="./images/最終形態.jpeg" width="45%"><br>
+<br>
+<h2>使ってみる</h2><br>
+音質は<strong>昔のラジオみたいな雰囲気。角が取れたような音で逆にいい感じ。</strong><br>
+このスピーカーの魅力は音質じゃない。<br>
+<strong>電源を必要としないためどこでも使えるところ</strong>が魅力なのだ。<br>
+<strong>ぶっ壊れても何回でも作ることができるから外でも使える。</strong><br>
+<br>
+<iframe width="600" height="355" src="https://www.youtube.com/embed/TQ0s0smZGgg?si=LE69lR8X6cSdI5g-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+</html>
