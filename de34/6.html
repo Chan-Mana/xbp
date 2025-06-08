@@ -86,5 +86,34 @@
 そこで、縦線での区切りをなくし、<strong>円形で得点を区切ることにした。</strong>やまさんナイスアイディア。
 <br>
 <br>
+<h2>とりあえず繋いでみる</h2><br>
+●圧力センサー1つをarduinoと接続する<br>
+→正しい繋ぎ方を見つけるにはかなり苦戦した<br>
+→最終的な繋ぎ方は下の写真の通り<br>
+<br>
+<img src="./images/繋ぎ方.jpg" width="30%"><br>
+<br>
+ソースコードは以下の通り(ChatGPT使用)<br>
+→このコードにより、シリアルモニターに数値が送られるようになった。<br>
+<br>
+<img src="./images/スクリーンショット 2025-06-08 20.23.50.png" width="45%"><br>
+<br>
+<h2>QRコード生成</h2><br>
+■シリアルモニターの数値からQRコードを作る方法は？<br>
+●ソースコードを調べる<br>
+→QRコード作成までのプロセス<br>
+<strong>センサーが感知する→arduinoが数値化→スコア化してPythonに送信→PythonがQRコード作成、Finderに送信</strong><br>
+<br>
+→再びChatGPTを使用。コードは以下の通り<br>
+<br>
+<img src="./images/スクリーンショット 2025-06-08 20.35.51.png" width="45%"><br>
+なお、シリアルポートの特定には以前の講義で使用した<strong>serial_serch.py</strong>を使用した。<br>
+<br>
+<br>
+<img src="./images/スクリーンショット 2025-06-08 20.55.47.png" width="40%">　<img src="./images/スクリーンショット 2025-06-08 20.57.29.png" width="40%"><br>
+スコアはまだ割り振っていないため適当だが、しっかりとPythonが動いて、Finder上に<strong>QRコードが生成された</strong>。<br>
+（めちゃくちゃ苦戦したから感動）<br>
+<br>
+<br>
 </body>
 </html>
