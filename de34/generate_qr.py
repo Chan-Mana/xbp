@@ -5,8 +5,8 @@ from PIL import Image
 # あなたのArduinoポートに変更！
 ser = serial.Serial('/dev/cu.usbmodem101', 9600, timeout=1)
 
-# GitHub Pagesのスコア表示ページ（URLにスコアを付ける）
-BASE_URL = "https://chan-mana.github.io/dart-score-viewer/"
+# GitHub Pagesのスコア表示ページ（クエリパラメータを使う！）
+BASE_URL = "https://chan-mana.github.io/dart-score-viewer/?score="
 
 print("スコアを受信中...")
 
