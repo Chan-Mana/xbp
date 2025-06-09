@@ -6,7 +6,7 @@ from PIL import Image
 ser = serial.Serial('/dev/cu.usbmodem101', 9600, timeout=1)
 
 # GitHub Pagesのスコア表示ページ（URLにスコアを付ける）
-BASE_URL = "https://chan-mana.github.io/dart-score-viewer/score.html"
+BASE_URL = "https://chan-mana.github.io/dart-score-viewer/"
 
 print("スコアを受信中...")
 
