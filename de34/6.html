@@ -62,7 +62,7 @@
 <h1>Project Note</h1>
 <body>
 <h2>イメージ</h2>
-<div><img src="./images/IMG_0331.jpg" width="40%">　<img src="./images/IMG_0332.jpg" width="40%"><br>
+<div><img src="./images/IMG_0331.jpg" width="30%">　<img src="./images/IMG_0332.jpg" width="30%"><br>
 <strong>概要</strong>：エアガンでの射撃とダーツを組み合わせたゲームを作る。<br>
 ダーツのボードに衝撃を感知するセンサーを取り付け、ディスプレイに表示したい。<br>
 あわせて、QRコードを読み取ると点数を確認できる仕組みを作りたい。</div>
@@ -79,37 +79,37 @@
 ●簡略化した衝撃感知の方法を考える<br>
 →考えた結果が以下の通り<br>
 <br>
-<img src="./images/IMG_0333.jpg" width="50%"><br>
+<img src="./images/IMG_0333.jpg" width="35%"><br>
 オレンジの断面のように得点を区切り過ぎてしまうと<strong>センサーでの感知が難しくなってしまう。</strong><br>
 そこで、縦線での区切りをなくし、<strong>円形で得点を区切ることにした。</strong>やまさんナイスアイディア。<br>
 今回は<strong>圧力センサー</strong>を使って製作する。<br></div>
 <br>
 <br>
 <h2>とりあえず繋いでみる</h2><br>
-●圧力センサー1つをarduinoと接続する<br>
+<h3>●圧力センサー1つをarduinoと接続する</h3><br>
 →正しい繋ぎ方を見つけるにはかなり苦戦した<br>
 →最終的な繋ぎ方は下の写真の通り<br>
 <br>
-<img src="./images/繋ぎ方.jpg" width="30%"><br>
+<img src="./images/繋ぎ方.jpg" width="20%"><br>
 <br>
 ソースコードは以下の通り(ChatGPT使用)<br>
 →このコードにより、シリアルモニターに数値が送られるようになった。<br>
 <br>
-<img src="./images/スクリーンショット 2025-06-08 20.23.50.png" width="45%"><br>
+<img src="./images/スクリーンショット 2025-06-08 20.23.50.png" width="35%"><br>
 <br>
 <h2>QRコード生成</h2><br>
-■シリアルモニターの数値からQRコードを作る方法は？<br>
+<h3>■シリアルモニターの数値からQRコードを作る方法は？</h3><br>
 ●ソースコードを調べる<br>
 →QRコード作成までのプロセス<br>
 <strong>センサーが感知する→arduinoが数値化→スコア化してPythonに送信→PythonがQRコード作成、Finderに送信</strong><br>
 <br>
 →再びChatGPTを使用。コードは以下の通り<br>
 <br>
-<img src="./images/スクリーンショット 2025-06-08 20.35.51.png" width="45%"><br>
+<img src="./images/スクリーンショット 2025-06-08 20.35.51.png" width="35%"><br>
 なお、シリアルポートの特定には以前の講義で使用した<strong>serial_serch.py</strong>を使用した。<br>
 <br>
 <br>
-<img src="./images/スクリーンショット 2025-06-08 20.55.47.png" width="40%">　<img src="./images/スクリーンショット 2025-06-08 20.57.29.png" width="40%"><br>
+<img src="./images/スクリーンショット 2025-06-08 20.55.47.png" width="30%">　<img src="./images/スクリーンショット 2025-06-08 20.57.29.png" width="30%"><br>
 スコアはまだ割り振っていないため適当だが、しっかりとPythonが動いて、Finder上に<strong>QRコードが生成された</strong>。<br>
 （めちゃくちゃ苦戦したから感動）<br>
 <br>
@@ -124,47 +124,144 @@
 <img src="./images/IMG_0520.jpg" width="25%"><br>
 <strong>足が溶けたセンサー</strong><br>
 <br>
-→本来の予定では、12個のセンサーを使用予定だったが<strong>予備を含めて15個</strong>注文した。<strong>（5000円以上）</strong><br>
+→本来の予定では、12個の圧力センサーを使用予定だったが<strong>予備を含めて15個</strong>注文した。<strong>（5000円以上）</strong><br>
 <br>
 <br>
 注文した次の日に<strong>ピエゾ素子</strong>というものを見つけた。これは、圧力センサーより安価で反応も良い。<br>
+しかし、注文した圧力センサーは発送の準備がされてしまっていた。<br>
 <br>
 <img src="./images/IMG_0519.jpg" width="25%"><br>
-そして何よりも良い点が、<strong>配線が半田付けされている</strong>点だ。<br>
+ピエゾの良い点は、<strong>配線が半田付けされている</strong>点だ。<br>
+自分たちで配線を半田付けする必要がないため、犠牲を出すことはない。<br>
 早くこれに気づけていれば出費を防げていた。痛い、、<br>
 <br>
-<strong>→気を取り直してピエゾをAmazonで注文した。</strong><br>
+<strong>→圧力センサー作戦は中止。ピエゾ素子を15個使う方向へシフト。</strong><br>
+</div>
+<br>
+<br>
+<h2>接続方法</h2>
+<div><h3>■6個までしか接続できないarduinoに15個どうやって接続する？</h3><br>
+  →とりあえずブレッドボードを<strong>3個</strong>使ってジャンパ線で繋ぐ。<br>
+  結果）なぜかうまくいかない、配線ごちゃごちゃ。<br>
+  <br>
+  →<strong>マルチプレクサ</strong>を使う<br>
+  結果）配線方法が難しい、迷宮入り。<br>
+  <br>
+  <strong>●大きいブレッドボード</strong>を使う<br>
+  結果）これに落ち着いた。最終的に使うピエゾは10個になった。<br>
+  A0-A5までを使用し、それぞれブレッドボードで分岐させ、アナログ端子１つに対してピエゾを２つ繋ぐようにした。<br>
+  同じ点数のピエゾが２つ存在するということだ。<br>
 </div>
 <br>
 <br>
 <h2>ピエゾとarduinoを接続</h2>
-<div><strong>■6個までしか接続できないarduinoに12個どうやって接続する？</strong><br>
-  <br>
-  →とりあえずブレッドボードを<strong>3個</strong>使ってジャンパ線で繋ぐ<br>
-  結果）なぜかうまくいかない、配線ごちゃごちゃ<br>
-  <br>
-  →<strong>マルチプレクサ</strong>を使う<br>
-  結果）配線方法が難しい、迷宮入り<br>
-  <br>
-  <strong>●大きいブレッドボード</strong>を使う<br>
-  
-
-</div>
-<br>
-<br>
-<h2>とりあえずピエゾ4個を接続</h2>
-<div>とりあえずブレッドボード一つで収まる数だけ接続してみた。<br>
+<div>→とりあえずブレッドボード一つで収まる数だけ接続してみた。<br>
 ピエゾは間に<strong>1mΩ</strong>の抵抗を並列に挟む必要がある。<br>
 また、ピエゾには<strong>極性がない。</strong><br>
 <br>
-<img src="./images/IMG_0953.jpg" width="40%"><br>
+<img src="./images/IMG_0953.jpg" width="30%"><br>
 <strong>図に表すとこんな感じ</strong><br>
 <br>
-<img src="./images/IMG_0481.jpg" width="40%"><br>
+<img src="./images/IMG_0481.jpg" width="30%"><br>
 →4個繋ぐとこんな感じ<br>
+→反応する感じや動作の確認は取れた。<br>
 <br>
-●今度はこれらに<strong>点数を割り当てる</strong>必要がある。
+しかし、これでは配線が短すぎてダーツボードに取り付けられないため,<br>
+<strong>●半田付けで延長</strong>することにした。<br>
+ぶっちーさんに任せたところ才能が開花していい感じに仕上げてくれた。<br>
+<br>
+<img src="./images/IMG_1200.JPG" width="30%"><br>
+<br>
+→ついでに、配線の先端が線のままだとブレッドボードに差しにくいため、<strong>ピンの半田付け</strong>もしてもらった。<br>
+<br>
+→配線の延長に成功したところで、新しく購入した<strong>大きいブレッドボードを2個使ってピエゾを15個接続</strong>、<br>
+そして事前に製作しておいたMDFのダーツボードに仮止めして動作確認を行なった。<br>
+<br>
+<img src="./images/IMG_1198.JPG" width="20%">　<img src="./images/IMG_1199.JPG" width="20%"><br>
+<img src="./images/IMG_0529.jpeg" width="30%"><br>
 </div>
-
+<br>
+<br>
+<div>
+<h2>ソースコード</h2><br>
+<h3>Python</h3>
+<img src="./images/python 1.png" width="35%"><br>
+<img src="./images/python2.png" width="35%"><br>
+<br>
+<h3>arduino</h3>
+<img src="./images/arduino1.png" width="35%"><br>
+<img src="./images/arduino2.png" width="35%"><br>
+<br>
+<h3>一連の流れ</h3>
+Pythonを動かし、ターミナルに"start"と入力する<br>
+↓<br>
+60秒間のカウントがスタートされ、その間のみピエゾの値を感知、<br>
+それぞれ割り当てられた固定の点数を合計していく<br>
+↓<br>
+60秒後、合計点数を表示するためのサイトに飛ぶ<strong>QRコードが生成され、画面に表示される</strong><br>
+↓<br>
+QRコードをスマホで読み取ると点数の確認ができる<br>
+<br>
+合計点数を表示するためのサイトは、<strong>Githubにて新しいリポジトリを作成した。</strong><br>
+<a href="https://chan-mana.github.io/dart-score-viewer/index.html?score=180" ><strong>テスト表示用ページ</strong></a><br>
+</div>
+<br>
+<br>
+<h2>動作確認と変更</h2><br>
+動作確認の結果は、<strong>ほぼ失敗であった。</strong><br>
+<br>
+■問題点としては、一つの大きいボードにピエゾをいくつか貼り付けているため、<br>
+全てのセンサーが共振する感じになってしまい、<strong>ピエゾ側が当たり判定を区別できない点</strong>だ。<br>
+これにより、PCに送られてくる点数は暴走し、一回のヒットでズラーーっと点が送られてきてしまった。<br>
+<strong>簡単にいうと、一回のヒットで全てのピエゾが反応していることになる。</strong><br>
+<br>
+●考えられた改善策としては<br>
+<strong>①ピエゾとMDFの間にスポンジを貼り、振動を吸収させる<br>
+②ダーツボードを一枚板で作るのではなく、点数ごとに分けて製作する</strong><br>
+<br>
+→よく考えた結果、ダーツ形式の難しさを再認識したため、大幅な路線変更をすることにした。<br>
+そもそものテーマであるダーツをやめて、<strong>電子版の射的のようなもの</strong>をゴールにすることにした。<br>
+<br>
+しかし、センサーが感知する→arduinoが数値化→スコア化してPythonに送信→PythonがQRコード作成、Finderに送信<br>
+という一連の流れは変わらないため、的の形式を変えるだけで対応することができた。
+</div>
+<br>
+<br>
+<h2>的の作成とメインボックス</h2>
+<h3>的の作成</h3>
+<div>的の素材はMDF2.5mmを使用した。<br>
+  →的の絵に関しては、やまさんが手書きした宇宙人のイラストとぶっちーさん制作の火星人のデータを<br>
+イラストレーターでトレースした。そしてそのデータを元にレーザー加工機でカットした。<br>
+<br>
+<img src="./images/IMG_1109.jpeg" width="20%">　<img src="./images/IMG_1110.JPG" width="20%">
+<br>
+<img src="./images/IMG_1132.jpeg" width="30%"><br>
+普通にキモすぎる<br>
+<br>
+<h3>メインボックス</h3>
+arduinoやブレッドボードがむき出しだと、プロトタイプ感が否めない。<br>
+そのため、パソコンケースのようなものが必要になった。<br>
+→ここはやまさんに設計から制作までをお任せした。<br>
+完成品は以下の画像の通りである。しっかり配線も通るように考えられている<br>
+<br>
+<img src="./images/メインボックス.JPG" width="20%">　<img src="./images/ボックス２.JPG" width="20%">
+</div>
+<br>
+<br>
+<h2>仮組、動作確認</h2>
+<div>→的にピエゾを貼り付け、土台に固定した。土台は3Dプリンターで刷ったもの。<br>
+<br>
+<img src="./images/土台.jpeg" width="20%">　<img src="./images/土台２.jpeg" width="20%"><br>
+<br>
+→次に、メインボックスの底板にブレッドボードとarduinoを固定した。<br>
+→そして、配線をMDFのくり抜かれた部分に通しながら組んでいった。最終的には下の画像の通り。<br>
+<br>
+<img src="./images/IMG_1155.jpeg" width="25%">　<img src="./images/IMG_1158.jpeg" width="25%"><br>
+<img src="./images/IMG_1161.jpeg" width="25%">　<img src="./images/IMG_1163.jpeg" width="25%"><br>
+</div>
+<br>
+<br>
+<h2>完成</h2>
+<div></div>
 </body>
 </html>

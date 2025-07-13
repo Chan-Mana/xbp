@@ -2,39 +2,67 @@ import serial
 import qrcode
 from PIL import Image
 import time
+import sys
 
-# Arduinoのポート（例：Mac）
-ser = serial.Serial('/dev/cu.usbmodem1101', 9600)
+ARDUINO_PORT = '/dev/cu.usbmodem101'
+BAUD_RATE = 9600
 
-while True:
-    cmd = input("開始するには「start」と入力：")
-    if cmd.lower() == "start":
-        print("ゲームスタート！10秒間だけスコアを記録します。")
+try:
+    ser = serial.Serial(ARDUINO_PORT, BAUD_RATE, timeout=1)
+    print(f"シリアルポート {ARDUINO_PORT} に接続しました。")
+except serial.SerialException as e:
+    print(f"エラー: シリアルポート {ARDUINO_PORT} に接続できません。詳細: {e}")
+    sys.exit(1)
 
-        start_time = time.time()
-        total_score = 0
+def run_game():
+    while True:
+        cmd = input("開始するには「start」と入力してください: ")
+        if cmd.lower() == "start":
+            print("ゲームスタート！60秒間でスコアを記録します。")
 
-        while time.time() - start_time < 10:
-            if ser.in_waiting:
-                line = ser.readline().decode().strip()
-                if line.isdigit():
-                    total_score += int(line)
-                    print(f"得点を加算：{line} → 合計：{total_score}")
+            DURATION = 60
+            INTERVAL = 0.2  # 感知間隔（秒）
+            total_score = 0
+            start_time = time.time()
 
-        print(f"\n制限時間終了！あなたの合計点は：{total_score} 点")
+            while time.time() - start_time < DURATION:
+                interval_start = time.time()
+                max_score_in_window = 0
 
-        # ✅ GitHub Pages上のスコアURLをQR化
-        url = f"https://chan-mana.github.io/dart-score-viewer/index.html?score={total_score}"
+                # INTERVAL 秒間に来たスコアを比較して最大値だけ保持
+                while time.time() - interval_start < INTERVAL:
+                    if ser.in_waiting:
+                        try:
+                            line = ser.readline().decode('utf-8').strip()
+                            if line.startswith("score:"):
+                                current = int(line.split(":")[1])
+                                max_score_in_window = max(max_score_in_window, current)
+                        except:
+                            continue
 
-        qr = qrcode.QRCode(
-            version=1,
-            box_size=10,
-            border=4
-        )
-        qr.add_data(url)
-        qr.make(fit=True)
+                # INTERVAL の中で最も大きかった値をスコアに追加
+                if max_score_in_window > 0:
+                    total_score += max_score_in_window
+                    print(f"感知：+{max_score_in_window}点 → 合計: {total_score}")
 
-        img = qr.make_image(fill_color="black", back_color="white")
-        img.save("score_qr.png")
-        img.show()
-        break
+            print(f"\n⌛ 終了！あなたの合計スコアは {total_score} 点です。")
+
+            # QRコード生成（URLにスコアを含める）
+            url = f"https://chan-mana.github.io/dart-score-viewer/index.html?score={total_score}"
+            print(f"生成されたURL: {url}")
+
+            qr = qrcode.QRCode(version=1, box_size=10, border=4)
+            qr.add_data(url)
+            qr.make(fit=True)
+            img = qr.make_image(fill_color="black", back_color="white")
+            img.save("score_qr.png")
+            img.show()
+
+            break
+        else:
+            print("「start」と入力してください。")
+
+if __name__ == "__main__":
+    run_game()
+    ser.close()
+    print("プログラムを終了します。")
