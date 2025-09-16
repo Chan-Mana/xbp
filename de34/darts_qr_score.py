@@ -18,9 +18,9 @@ def run_game():
     while True:
         cmd = input("開始するには「start」と入力してください: ")
         if cmd.lower() == "start":
-            print("ゲームスタート！60秒間でスコアを記録します。")
+            print("ゲームスタート！30秒間でスコアを記録します。")
 
-            DURATION = 60
+            DURATION = 30
             INTERVAL = 0.2  # 感知間隔（秒）
             total_score = 0
             start_time = time.time()
