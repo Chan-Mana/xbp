@@ -1,106 +1,108 @@
 <!DOCTYPE html>
 <style>
-@font-face {
-  font-family: Moderne Sans;
-  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
-}
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: #000;
-}
-
-/* ここを変更：動画 → 画像 */
-.video-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-
-  background-image: url("your-image.jpg"); /* ←ここ変える */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* iframeは不要なので消す or 非表示 */
-.video-bg iframe {
-  display: none;
-}
-
-/* 暗くするレイヤー（そのまま使える） */
-.video-bg::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-}
-
-div#fashion {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-header {
-  position: fixed;
-  width: 100%;
-  text-align: center;
-  color: white;
-  transition: 0.4s;
-}
-
-header:hover {
-  background: rgba(255, 255, 255, 0.8);
-  color: #000;
-}
-
-h1 {
-  font-family: Moderne Sans, sans-serif;
-  text-align: center;
-  font-size: 2rem;
-  width: 100%;
-  letter-spacing: 0.5rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: inherit;
-  padding: 1rem;
-}
-
-h2 {
-  font-family: Georgia, serif;
-  font-size: 5vmin;
-  text-align: center;
-  margin: 2rem 3rem 0;
-  color: #fff;
-  font-weight: 100;
-}
-
-h3 {
-  font-family: Georgia, serif;
-  font-size: 3vmin;
-  text-align: center;
-  margin: 2rem 3rem 0;
-  color: #ffffff;
-  font-weight: 100;
-}
-</style>
-
-<html lang="ja">
-
-<div class="video-bg"></div>
+  @font-face {
+    font-family: Moderne Sans;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background-image: url("./images/XBP背景.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  
+  /* 全体ぼかし対象 */
+  .wrapper {
+    opacity: 0;
+    filter: blur(12px);
+    animation: fadeInAll 2.5s ease forwards;
+  }
+  
+  /* 暗いレイヤー */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;
+  }
+  
+  /* アニメーション */
+  @keyframes fadeInAll {
+    from {
+      opacity: 0;
+      filter: blur(12px) brightness(0.7);
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0) brightness(1);
+      transform: scale(1);
+    }
+  }
+  
+  div#fashion {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  header {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    color: white;
+    transition: 0.4s;
+  }
+  
+  header:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+  }
+  
+  h1 {
+    font-family: Moderne Sans, sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: inherit;
+    padding: 1rem;
+  }
+  
+  h2 {
+    font-family: Georgia, serif;
+    font-size: 5vmin;
+    text-align: center;
+    margin: 2rem 3rem 0;
+    color: #fff;
+    font-weight: 100;
+  }
+  
+  h3 {
+    font-family: Georgia, serif;
+    font-size: 3vmin;
+    text-align: center;
+    margin: 2rem 3rem 0;
+    color: #fff;
+    font-weight: 100;
+  }
+  </style>
+  <div class="wrapper">
 
 <header>
   <h1>X-Business</h1>
