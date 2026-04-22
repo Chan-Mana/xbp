@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>Project Note</title>
-
 <style>
 @font-face {
   font-family: Moderne Sans;
@@ -14,27 +9,52 @@
   box-sizing: border-box;
 }
 
-/* 背景画像に変更 */
 body {
   margin: 0;
-
-  background-image: url("your-image.jpg"); /* ←ここ変更 */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: #000;
 }
 
-/* 暗くするオーバーレイ */
-body::before {
-  content: "";
+/* 背景を画像に変更 */
+.video-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
   z-index: -1;
+
+  background-image: url("your-image.jpg"); /* ←ここ変える */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* フェードイン */
+  opacity: 0;
+  filter: blur(12px);
+  animation: fadeInBg 2.5s ease forwards;
+}
+
+/* 暗さレイヤー */
+.video-bg::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+}
+
+/* アニメーション */
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+    filter: blur(12px) brightness(0.7);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+  }
 }
 
 div#fashion {
@@ -60,10 +80,14 @@ header:hover {
 
 h1 {
   font-family: Moderne Sans, sans-serif;
-  text-align: center;
-  font-size: 2rem;
-  width: 100%;
+  font-size: 2.5rem;
   letter-spacing: 0.5rem;
+}
+
+h4 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
 }
 
 nav a {
@@ -74,7 +98,7 @@ nav a {
 
 h2 {
   font-family: Georgia, serif;
-  font-size: 5vmin;
+  font-size: 8vmin;
   text-align: center;
   margin: 2rem 3rem 0;
   color: #fff;
@@ -90,22 +114,26 @@ h3 {
   font-weight: 100;
 }
 </style>
-</head>
 
-<body>
+<html lang="ja">
+
+<!-- 背景 -->
+<div class="video-bg"></div>
 
 <header>
-  <h1>Project Note</h1>
+  <h1>doyo lab</h1>
+  <h4>Edited by Chan_Mana</h4>
   <nav>
-    <a href="./note/サーキュラー　エコノミー.html">サーキュラーエコノミー</a>
-    <a href="./note/講演　横浜市.html">講演（横浜市の方より）</a>
+    <a href="./project note/index.html">Project Note</a>
+    <a href="/index.html">XBP</a>
+    <a href="/digi_fab/index.html">digi fab</a>
   </nav>
 </header>
 
 <div id="fashion">
-  <h2>日々の活動、成長を記録する。</h2>
-  <h3>道用ゼミでの活動を<br>プロジェクトノートと称して記録します。</h3>
+  <h2>Make, test, and talk.</h2>
+  <h3>デザインと実験と対話のためのスタジオ。</h3>
 </div>
 
-</body>
+<title>Chan_Manaのサイト</title>
 </html>
