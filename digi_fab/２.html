@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<div class="bg_pattern Paper_v2"></div>
+<style>.bg_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: -1;
+  }
+  .Paper_v2 {
+    background-image:
+      repeating-linear-gradient(to bottom,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
+    
+      repeating-linear-gradient(to right,
+        transparent 25px,
+        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+        transparent 27px,  transparent 51px, 
+        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+        transparent 53px,  transparent 77px, 
+        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+        transparent 79px,  transparent 103px, 
+        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+        transparent 105px,  transparent 129px, 
+        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+  }
+  </style>
+    <style>*{text-align: center;}</style>
+    <style>h2 {
+        color: #505050;/*文字色*/
+        padding: 0.5em;/*文字周りの余白*/
+        display: inline-block;/*おまじない*/
+        line-height: 1.3;/*行高*/
+        background: #dbebf8;/*背景色*/
+        vertical-align: middle;
+        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
+      }
+      
+      h2:before {
+        content: '●';
+        color: white;
+        margin-right: 8px;
+      }</style>
+      <style>*{font-size: large;}</style>
+      <style>h1{font-size: x-large};</style>
+      <style>h2{font-size: larger};</style>
+    <title>Computer-controlled Cutting</title>
+</head>
+<h1>Assignment No.2　Computer-controlled Cutting</h1>
+<h2>はじめの一歩</h2>
+<div><strong>Computer-controlled Cutting</strong>とはなんぞやという感じで始まった今回の課題。正直自由すぎて前回の3DPrintingよりも難しかった。<br>
+何を作ろうかなとやまくんと考えていたら彼が珍しく良いことを言った。<br>
+<strong>「Apple Watchのバンド作れば？」</strong><br>
+それ良いやんてことで本気を出して頑張って作ることにした。</div>
+<br>
+<h2>Fusionと曲げ加工</h2>
+<div>早速Fusionを起動してスケッチを始めたのだが、ある問題が発生した。<br>
+<strong>腕に巻くということは、曲げ加工をしなければならない。</strong><br>
+しかしYouTubeなどで調べても設定などが複雑なものばかりだった。<br>
+さあ困ったと思っていたのだが一つ希望の見えた。<br>曲げ加工用の<strong>PDFデータ</strong>がネットに公開されていた。<br>
+<strong>「これをキャンバスに設定してなぞる感じでスケッチしていけばできるのでは」</strong>というわずかな希望を信じてやってみた。<br>
+実際のスケッチが以下の画像である。</div>
+<br>
+<div><img src="./images/スクリーンショット 2024-11-03 23.49.39.png" width="40%">　<img src="./images/スクリーンショット 2024-11-03 23.49.42.png" width="40%">
+<br>
+（気が狂いそうなくらいめんどくさかった）</div>
+<br>
+<h2>いざレーザーカット/試行錯誤</h2>
+<div>1番の山場と言っても良いであろうスケッチを乗り越えて無敵になった。<br>
+早速ファブラボに行きレーザーカッターで出力してみた。その結果が以下の画像である。</div>
+<br>
+<div><img src="./images/IMG_3123.jpg" width="30%">　<img src="./images/IMG_3125.jpg" width="30%"><br>
+左側・・・形はすごく綺麗だったが、何回かグネグネしているうちに<strong>穴のところから裂けてしまった。</strong><br>
+右側・・・左同様形は綺麗だったが、バンドの留め具の部分が<strong>切れてしまった。</strong><br>
+<br>
+とりあえず<strong>MDF素材の強度を確認できた</strong>からヨシとする。</div>
+<div>
+さあここから調整していく。<br>
+<br>
+まず、左側のパーツは穴の近くから裂けてしまった。これを回避するために、Illustratorで穴の近くには<strong>カットの線を入れないようにした。</strong><br>
+そして右側。こっちは切れてしまったが、幸い綺麗な形のまま切れたので切れ端をそのまま使うことにした。<br>
+以下の画像が調整後のものである。</div>
+<br>
+<div><img src="./images/IMG_3126.jpg" width="30%">　<img src="./images/IMG_3127.jpg" width="30%"><br>
+左側・・・完璧。しっかり曲がる上に強度も増した。<br>
+右側・・・切れ端には見えないくらい良い感じ。謎のパーツがついているが、それについては後で。<br>
+<br>
+<strong>とりあえずバンド部分は完成。だが今回は本気を出しているので、ここでは終わらない。</strong></div>
+<br>
+<h2>Apple Watchと連結</h2>
+<div>バンドの部分が出来上がって浮かれている場合ではないのだ。問題はこのバンドとApple Watchをどう連結するのかである。<br>
+とりあえず何か使えそうなものがないかAmazonを漁っていたらこんなものを見つけた。</div>
+<br>
+<div><img src="./images/IMG_3132.PNG" width="25%">　<img src="./images/IMG_3133.PNG" width="25%"><br>
+この商品たちをみた時ビビッときた。<strong>これと3Dプリンターを使えばいけるぞ。</strong><br>
+そんな感じで今度は3Dプリンターで連結に足りない部分を作ることにした。<br>
+そして出来上がったのが以下の画像のものである。</div>
+<br>
+<div><img src="./images/IMG_3135.jpg" width="30%"><br>
+  手作り感がすごいが、一気に時計のバンド感が出た。<br></div>
+  <br>
+<div>Fusionで見るとこんな感じ<br>
+  <img src="./images/スクリーンショット 2024-11-04 21.43.36.png" width="40%">　<img src="./images/スクリーンショット 2024-11-04 21.44.34.png" width="40%"></div><br>
+<div>そして<strong>最終的に出来上がったのがこれである。</strong></div><br>
+<div>
+<img src="./images/IMG_3136.jpg" width="45%"><br>
+<img src="./images/IMG_3137.jpg" width="30%">　<img src="./images/IMG_3138.jpg" width="30%"></div>
+<br>
+<div>完璧すぎて笑ってしまった。少し不格好だが腕に巻くこともできる。<br>
+  <br>
+そんな感じで浮かれていたら思いもよらぬところでトラブルが起きた。<br>
+Amazonで買った<strong>連結部のネジ山が潰れてしまった。</strong><br>
+<br>
+ひとまず期限内に形になって良かったが、<strong>完全体となるのはお預けとなってしまった。。。</strong></div>
+<br>
+<h2>おわりに</h2>
+<div>最後に使ったデータ、商品のリンク、作成したファイルを置いておく。<br>
+  <br>
+ <strong>外部データ</strong><br>
+・曲げ加工のPDFをダウンロードしたサイトは<a href="https://www.comnet-network.co.jp/blog/laser-dojo-bending-mdf/" target="_blank">ここ</a><br>
+・Apple Watchと連結する部品は<a href="Apple Watch バンド アダプター Sakulaya... https://www.amazon.jp/dp/B0773G33FP?ref=ppx_pop_mob_ap_share" target="_blank">これ</a><br>
+・腕時計用のバックル（？）は<a href="[BISONSTRAP] 時計バックル ステンレススチール 尾錠... https://www.amazon.jp/dp/B0B427BXTL?ref=ppx_pop_mob_ap_share" target="_blank">これ</a><br>
+<br>
+<strong>自分で作ったものたち</strong><br>
+・<a href="./files/バンド 1.stl">バンド１（余計な部分がついているが問題なし）</a><br>
+・<a href="./files/バンド 2.stl">バンド２</a><br>
+・<a href="./files/連結部 1.stl">連結部１</a><br>
+・<a href="./files/連結部 2.stl">連結部２</a><br>
+以上。最後までありがとうございました。</div>
+<br>
+<br>
+<body>
+</html>
