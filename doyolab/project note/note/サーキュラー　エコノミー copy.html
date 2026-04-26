@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/ProjectNote背景.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 50px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<header>
+  <h1>Project Note 1</h1>
+  <nav>
+    <a href="../../project note/index.html">Project Note</a>
+    <a href="../../index.html">HOME</a>
+  </nav>
+</header>
+
+<section>
+  <h2>サーキュラーエコノミー</h2>
+  <h3>サーキュラーエコノミーとは</h3>
+  <p>現代のスタンダードとなっている経済の仕組みは、大量生産→大量消費→大量廃棄が一方向に進むリニアエコノミーと呼ばれるものである。
+    これに対し、近年提唱されているのが廃棄を最小限にする社会経済システムであるサーキュラーエコノミーである。
+    サーキュラーエコノミーを説明する際にはバタフライ・ダイアグラム」と呼ばれる蝶のような形をした図が用いられる。</p>
+    <img src="./images/p062_1.jpg" width="100%">
+    <p>左側に生物的サイクル、右側に技術的サイクルが描かれている。生物的サイクルは、地面から上のもの（植物や生物）などを指す。
+      技術的サイクルは、資源に限りがあるため循環を回す必要がある。
+      外側に描かれているものの方が環境への負荷が大きく、内側にあるものの循環を優先させるという
+      見方である。サーキュラーエコノミーにおいて大切となるのは、ものを「捨てる」という考え方から「戻す」に変えることである。</p>
+</section>
+
+<section>
+  <h3>グループでの話し合い<br>（利用しているサービスについて）</h3>
+  <p>初めに、私たちが利用しているサービスの中でサーキュラーエコノミーに関係するものがないか考えた。具体的に挙げられたものが<br>
+    ・カーシェアサービス<br>
+    ・モバイルバッテリーのシェアサービス<br>
+    ・古いスマホ電池の回収<br>
+    などの主にシェアリングサービスが多数挙げられた。</p>
+  <p></p>
+</section>
+
+<section>
+  <h3>利用していなくてもOK</h3>
+  <p>次に、自分たちが利用している、していない関係なくサービス、製品がないか考え直した。<br>
+    その結果挙げられたものが<br>
+      ・ペットボトルのキャップ回収<br>
+      ・服の回収<br>
+      などが挙げられた。</p>
+</section>
+
+<section>
+  <h3>〜その差ってなんだろう？〜</h3>
+  <p>ここまででさまざまな例を挙げてきたが、私たちが利用したいと思うサービスと興味を持たないサービスの違いはどこにあるのか。
+    私たちが辿り着いた結論は次の通りである。それは「自分に利益が還元されていると実感するかしないか」である。
+  カーシェアなどのサービスは目に見えて利益が還元されている一方で、ペットボトルキャップのリサイクルなどは私たちの見えないところで加工などが行われている。
+  こうなると本当に自分に利益があるのか、また自分だけ意識する意味があるのかといった感情になってしまうと考えた。</p>
+  <img src="./images/IMG_4399.jpg" width="100%">
+</section>
+
+<section>
+  <h3>出典</h3>
+  <p><a href="https://www.env.go.jp/policy/hakusyo/r03/html/hj21010202.html">環境省　第2節　循環経済への移行</a><br>
+    <a href="https://www.aist.go.jp/aist_j/magazine/20231011.html">産総研マガジン　サーキュラーエコノミーとは？<br>
+      <a href="https://ideasforgood.jp/2019/10/03/circular-economy-conference/">IDEAS FOR GOOD　社会をもっと良くする世界のアイデアマガジン
+        サーキュラーエコノミー・ジャパン設立記念カンファレンス 先行事例から学ぶ日本での可能性</a></p>
+</section>
