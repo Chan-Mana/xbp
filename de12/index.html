@@ -1,35 +1,144 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>XBP_HPsample</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="./images/xbp.ico">
-</head>
-<body>
-    <logotohome>
-    <a href="../index.html"><img src="./images/0_XBlogo.png" alt=""></a>
-    </logotohome>
-    <h1>デザイン演習Ⅰ・Ⅱ</h1>
-        <h2>HTMLに関すること</h2>
-        <ol>
-            <li><a href="./hp1.html" target="_blank">htmlの基礎知識</a></li>
-            <li><a href="./hp2.html" target="_blank">htmlのwork</a></li>
-            <li><a href="./test.html" target="_blank">テストページ</a>
-        <h2>演習ノート一覧</h2>
-<ul><li><a href="./1.html" target="_blank">第1回</a></li>
-<li><a href="./2.html" target="_blank">路上観察</a></li>
-<li><a href="./files/Presentation.pdf" target="_blank">データ分析</a></li>
-<li><a href="./3.html" target="_blank">Pythonで作るゲーム</a></li>
-<li><a href="./4.html" target="_blank">可能性の模索</a></li>
-<li><a href="./5.html" target="_blank">テキストマイニング</a></li>
-<li><a href="./6.html" target="_blank">インタビュー</a></li>
-<li><a href="./7.html" target="_blank">共起ネットワーク</a></li></ul>
+<meta charset="UTF-8">
+<title>デザイン演習I/II</title>
 
+<style>
+  @font-face {
+    font-family: Moderne Sans;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background-image: url("../de12/images/back.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  
+  /* 全体ぼかし対象 */
+  .wrapper {
+    opacity: 0;
+    filter: blur(12px);
+    animation: fadeInAll 2.5s ease forwards;
+  }
+  
+  /* 暗いレイヤー */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;
+  }
+  
+  /* アニメーション */
+  @keyframes fadeInAll {
+    from {
+      opacity: 0;
+      filter: blur(12px) brightness(0.7);
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0) brightness(1);
+      transform: scale(1);
+    }
+  }
+  
+  div#fashion {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  header {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    color: white;
+    transition: 0.4s;
+  }
+  
+  header:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+  }
+  
+  h1 {
+    font-family: Moderne Sans, sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: inherit;
+    padding: 1rem;
+  }
+  
+  h2 {
+    font-family: Georgia, serif;
+    font-size: 5vmin;
+    text-align: center;
+    margin: 2rem 3rem 0;
+    color: #fff;
+    font-weight: 100;
+  }
+  
+  h3 {
+    font-family: Georgia, serif;
+    font-size: 3vmin;
+    text-align: center;
+    margin: 2rem 3rem 0;
+    color: #fff;
+    font-weight: 100;
+  }
+  </style>
     
-<br>
-<br>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<header>
+  <h1>デザイン演習I/II</h1>
+  <nav>
+    <a href="../index.html">Back</a>
+    <a href="../doyolab/index.html">HOME</a>
+    <a href="./hp1.html">htmlの基本</a>
+    <a href="./hp2.html">htmlのワーク</a>
+    <a href="./test.html">テストページ</a><br>
+    <br>
+    <a href="./1.html">初回</a>
+    <a href="./2.html">路上観察</a>
+    <a href="./files/Presentation.pdf" target="_blank">データ分析</a>
+    <a href="./3.html">Python</a>
+    <a href="./4.html">可能性の模索</a>
+    <a href="./5.html">テキストマイニング</a>
+    <a href="./6.html">インタビュー</a>
+    <a href="./7.html">共起ネットワーク</a>
+  </nav>
+</header>
+
+<div id="fashion">
+    <h2>日々の活動、成長を記録する。</h2>
+    <h3>デザイン演習I/IIでの活動を記録しました。</h3>
+  </div>
+  </body>
+  </html>
 
 
-</body>
-</html>
