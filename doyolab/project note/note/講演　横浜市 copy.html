@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 100px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<header>
+  <h1>Project Note 2</h1>
+  <nav>
+    <a href="../../project note/index.html">Project Note</a>
+    <a href="../../index.html">HOME</a>
+  </nav>
+</header>
+
+<section>
+  <h3>横浜市の方の講演</h3>
+  <p>今回は横浜市の方がゲストスピーカーとして来てくださり、「みなとみらい21地区における脱炭素とサーキュラーエコノミーの取り組み」についての講演をしてくださった。
+    また、廃棄されるクリアファイルの有効活用法についてのアイディアを以下にメモとしてまとめておく。
+  </p>
+<br>
+<br>
+  <h3>みなとみらい21地区における取り組み</h3>
+  <p>グリーンな社会の実現を目指し、カーボンニュートラルの推進と循環型社会にむけた取り組みを進めていくとのことであった。
+    資源再利用により環境にも人にもやさしく、経済の活性化にもつながるサステナブルな循環型社会を市民とつくっていくとおっしゃっていた。
+    みなとみらいは2022年４月に脱炭素先行地域へと選定された。脱炭素先行地域とは国が認定する2030年度までに電力消費に伴うCO2排出の実質ゼロを実現する地域を指すのである。
+    脱炭素に向けた取り組みとしては、太陽光発電設備の設置や公道充電器、LEDや普及啓発などさまざまなものが行われている。</p>
+    <img src="./images/yokohama.jpg" width="100%">
+    <br>
+  <br>
+<h3>みなとみらい・サーキュラーシティプロジェクト</h3>
+<p>ヨコハマSDGsデザインセンター、脱炭素・GREEN EXPO推進局の連携により2023年3月に開始された。
+脱炭素先行地域としての取り組みの一つとして、地区で働き、暮らし、学ぶ人々が共にサーキュラーエコノミーを推進するものである。
+脱炭素を加速するとし型のサーキュラーエコノミーモデルの構築・発信に取り組むプロジェクトである。</p>
+<br>
+<br>
+<h3>ボトルtoボトル水平リサイクル</h3>
+<p>みなとみらい21地区で2025年1月より、ペットボトルのボトルtoボトルリサイクルを実施。
+  事業公募により、サントリーホールディングス株式会社をはじめとする企業グループと実施。
+  令和７年度に回収したペットボトルは約90トン、500ml換算で約450万本に相当する。
+</p>
+<img src="./images/recycle.jpg" width="100%">
+<br>
+そのほかにもさまざまなユニークな活動を行っている。
+<br>
+</section>
+
+<section>
+  <h2>横浜市×doyo lab</h2>
+  <h3>クリアファイル再生プロジェクト </h3>
+<p>単一素材のクリアファイルを回収し、再生ペレットへと変化させ何かに活用できないかというプロジェクトである。
+  再生プラ素材として経済的な利活用が成立するかを実証するのである。<br>
+  <h3>「クリアファイルから次の価値を生み出す」</h3>
+  ということをテーマとし、3Dプリンタの活用やファイルそのもののアップサイクルなどさまざまな視点から可能性を広げていく。</p>
+  <img src="./images/3dprinter.jpg" width="100%">
+</section>
