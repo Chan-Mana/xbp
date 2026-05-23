@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 100px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<header>
+  <h1>Project Note 3</h1>
+  <nav>
+    <a href="../../project note/index.html">Project Note</a>
+    <a href="../../index.html">HOME</a>
+  </nav>
+</header>
+
+<section>
+ <h3>3Dプリンターを活用</h3>
+ <p>廃棄されるクリアファイルを活用する方法として、大きく2つの方法が挙げられた。
+  <strong>一つはペレットへと変化させ、3Dプリンターのフィラメントとして活用する方法、
+もう一つはクリアファイルを切ったり貼ったりしてそのまま活用するという方法も挙げられた。</strong>
+自分は、3Dプリンターを活用して進めることにした。</p>
+<br>
+<br>
+  <h3>テーマを決める</h3>
+  <p>3Dプリンターを活用していく組で、大きなテーマを決めた。その中で決まったテーマは
+    植物、自然、アメニティ、アクセサリなどが挙げられた。
+    全体の統一感を出すために決められた大きなテーマが<strong>森や植物</strong>であった。以下の画像はアイディア案たちである。</p>
+    <img src="./images/white_board.jpg" width="100%">
+</section>
+
+<section>
+  <h3>制作</h3>
+  <p>早速制作に取り掛かった。
+    まず、クリアファイルペレットから作られたフィラメントのポテンシャルを把握するために、</p>
+</section>
