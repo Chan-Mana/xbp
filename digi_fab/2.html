@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 50px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
+</head>
+
+<div class="wrapper">
+
+  <header>
+    <h1>Computer-controlled-Cutting</h1>
+    <nav>
+      <a href="../digi_fab/index.html">Back</a>
+      <a href="../../index.html">HOME</a>
+    </nav>
+  </header>
+
+  <section>
+    <h3>はじめの一歩</h3>
+    <p>Computer-controlled Cuttingがよくわからないまま始まった今回の課題。
+      テーマが自由すぎて前回の3DPrintingよりも難しかった。時間をかけて考えた結果閃いたのが、<strong>Apple Watchのバンド</strong>を作ることである。
+      素材は厚さ2.5mmのMDFボード、3Dプリンター、市販の金具を使用した。使用ソフトはFusion360。
+    </p>
+    <br>
+    <h3>Fusionと曲げ加工</h3>
+    <p>早速Fusionを起動してスケッチを始めたのだが、ある問題が発生した。
+      <strong>腕に巻くということは、曲げ加工をしなければならない。</strong>
+      しかしYouTubeなどで調べても設定などが複雑なものばかりだった。そこでさらに調べてみると、曲げ加工用のPDFデータがネットに公開されていた。
+      このデータをFusionのキャンバスに設定し、なぞっていくことにした。以下の画像が実際のスケッチである。
+    </p>
+    <img src="./images/スクリーンショット 2024-11-03 23.49.39.png" width="50%"><img src="./images/スクリーンショット 2024-11-03 23.49.42.png" width="50%">
+    <br>
+    <br>
+    <br>
+    <h3>レーザーカット/試行錯誤</h3>
+    <p>山場であるスケッチを終え、いざレーザーカッターで出力してみた。その結果が以下の画像である。</p>
+    <img src="./images/IMG_3123.jpg" width="50%"><img src="./images/IMG_3125.jpg" width="50%">
+    <p>左：形は綺麗に出たものの、何回か曲げたら避けてしまった。<br>
+    右：形は綺麗だが、バンドの留め具の部分が切れてしまった。<br>
+  MDFの強度を確認するには十分であった。ここからは調整をしていく。</p>
+  <br>
+  <p>左側のパーツは穴の近くから避けてしまったため、Illustratorで穴の近くにはカット線を入れないようにした。
+    そして右側は、幸い綺麗な形のまま裂けてしまったので切れ端をそのまま使うことにした。以下の画像は調整後のものである。
+  </p>
+  <img src="./images/IMG_3126.jpg" width="50%"><img src="./images/IMG_3127.jpg" width="50%">
+  <p>左側：しっかり曲がる上に強度も増した。<br>
+  右側：切れ端から作ったとは思えない完成度。<br>
+バンド部分はこれで完成。</p>
+<br>
+<h3>Apple Watchと連結</h3>
+<p>バンドの部分は完成したが、これをどうやってApple Watchと連結するかが問題である。
+  Amazonで何か使えるものがないか調べたところ以下のようなものを見つけた。
+</p>
+<img src="./images/IMG_3132.PNG" width="50%"><img src="./images/IMG_3133.PNG" width="50%">
+<p>この部品と3Dモデルを組み合わせればうまくいくような気がした。早速注文し、連結に足りないパーツを3Dプリンターで製作した。
+  Fusionで見ると以下のようなモデルである。
+</p>
+<img src="./images/スクリーンショット 2024-11-04 21.43.36.png" width="50%"><img src="./images/スクリーンショット 2024-11-04 21.44.34.png" width="50%">
+<p>そしてこのパーツをバンド部分と連結する。以下の画像のようになった。
+</p>
+<img src="./images/IMG_3135.jpg" width="100%">
+<p>手作り感は否めないが、時計のバンドっぽくなった。そして、最終的に完成したものが以下の通りである。</p>
+<img src="./images/IMG_3136.jpg" width="100%">
+<img src="./images/IMG_3137.jpg" width="50%"><img src="./images/IMG_3138.jpg" width="50%">
+<p>完成度の高さに自分でびっくりした。見た目は手作り感満載で少し不格好だが、しっかり腕に巻くこともできて実用性もある。
+  期限内に形にすることができて安心した。
+</p>
+<br>
+<h3>おわりに</h3>
+<p>使用したデータ、商品のリンク、作成したデータを置いておく。<br>
+  ・曲げ加工のPDFをダウンロードしたサイトは<a href="https://www.comnet-network.co.jp/blog/laser-dojo-bending-mdf/" target="_blank">ここ</a><br>
+  ・Apple Watchと連結する部品は<a href="Apple Watch バンド アダプター Sakulaya... https://www.amazon.jp/dp/B0773G33FP?ref=ppx_pop_mob_ap_share" target="_blank">これ</a><br>
+  ・腕時計用のバックル（？）は<a href="[BISONSTRAP] 時計バックル ステンレススチール 尾錠... https://www.amazon.jp/dp/B0B427BXTL?ref=ppx_pop_mob_ap_share" target="_blank">これ</a><br>
+  ・<a href="./files/バンド 1.stl">バンド１（余計な部分がついているが問題なし）</a><br>
+・<a href="./files/バンド 2.stl">バンド２</a><br>
+・<a href="./files/連結部 1.stl">連結部１</a><br>
+・<a href="./files/連結部 2.stl">連結部２</a><br>
+</p>
+  </section>
