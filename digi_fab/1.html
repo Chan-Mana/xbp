@@ -1,110 +1,185 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-<div class="bg_pattern Paper_v2"></div>
-<style>.bg_pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fff;
-    z-index: -1;
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
   }
-  .Paper_v2 {
-    background-image:
-      repeating-linear-gradient(to bottom,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
-    
-      repeating-linear-gradient(to right,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
   }
-  </style>
-    <style>*{text-align: center;}</style>
-    <style>h2 {
-        color: #505050;/*文字色*/
-        padding: 0.5em;/*文字周りの余白*/
-        display: inline-block;/*おまじない*/
-        line-height: 1.3;/*行高*/
-        background: #dbebf8;/*背景色*/
-        vertical-align: middle;
-        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
-      }
-      
-      h2:before {
-        content: '●';
-        color: white;
-        margin-right: 8px;
-      }</style>
-      <style>*{font-size: large;}</style>
-      <style>h1{font-size: x-large};</style>
-      <style>h2{font-size: larger};</style>
-    <title>3DPrinting</title>
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 50px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
 </head>
-<body>
-<h1>Assignment No.1　3DPrinting</h1>
-<h2>はじめの一歩</h2>
-<div>デジタルファブリケーションの講義で、ピンセットを進化させる課題が提示させられた。<br>
-  私が思いついたアイディアは、「長さ調整が可能なピンセット」や「指にはめるタイプ」など<strong>機能性を重視</strong>したものが多かった。<br>
+
+<div class="wrapper">
+
+  <header>
+    <h1>3DPrinting</h1>
+    <nav>
+      <a href="../digi_fab/index.html">Back</a>
+      <a href="../../index.html">HOME</a>
+    </nav>
+  </header>
+
+<section>
+  <h3>はじめの一歩</h3>
+  <p>デジタルファブリケーションの講義で、ピンセットを進化させる課題が提示させられた。
+    私が思いついたアイディアは、「長さ調整が可能なピンセット」や「指にはめるタイプ」など
+    機能性を重視したものが多かった。
+  </p>
+  <img src="./images/IMG_2689.jpeg" width="50%"><img src="./images/IMG_2693.jpeg" width="50%">
   <br>
-  <img src="./images/IMG_2689.jpeg" width="30%">　<img src="./images/IMG_2693.jpeg" width="30%">
+  <p>しかし、いざCADと向き合うと初心者の私には制作が難しすぎた。
+    そこで閃いたのが「デザインが変なものを作る」ということであった。
+    言い換えるならば、機能性を捨てるということだ。そして生まれたのが、人間の形をしているピンセットである。
+  </p>
   <br>
-  （アイディアたちと当初の計画のスケッチ）</div>
   <br>
-  <div>しかし、いざCADと向き合うと初心者の私には制作が難しすぎた。<br>
-    そこで閃いたのが<strong>「デザインがちょっと変な物を作る」</strong>ということであった。<br>
-  簡単にいうと機能性を捨てるということだ。</div>
+  <h3>完成</h3>
+  <img src="./images/IMG_2685.jpeg" width="50%"><img src="./images/IMG_2690.jpeg" width="50%">
+  <p>作品名は「ピンセットだって美脚になりたい」<br>
+  実はこれは3号機で失敗を繰り返してやっと出来上がったものである。
+</p>
   <br>
-  <div>そして生まれたのが、人間の形をしているピンセットだ。<br>
-<br>
-<h2>完成品</h2>
-<div><img src="./images/IMG_2685.jpeg" width="30%">　<img src="./images/IMG_2690.jpeg" width="30%">
-<br>
-<br>
-作品名は<h3>「ピンセットだって美脚になりたい」</h3></div>
-<div>実はこれは<strong>３号機</strong>で失敗を繰り返してやっと出来上がったものである<br><br></div>
-<h2>進化の過程</h2><br>
-<div><img src="./images/IMG_2688.jpeg" width="30%">
+  <br>
+  <h3>進化の過程</h3>
+  <img src="./images/IMG_2688.jpeg" width="100%">
+  <p>左から、１号機は足の付け根の部分が太すぎて掴む動作が不可能<br>
+  ２号機は足のカーブが強すぎて掴みづらい<br>
+３号機は足の太さもカーブ具合も完璧</p>
+<img src="./images/スクリーンショット 2024-10-11 11.57.28.png" width="50%"><img src="./images/スクリーンショット 2024-10-11 11.57.08.png" width="50%">
 <br>
 <br>
-左から、１号機・・・足の付け根の部分が太すぎてそもそも掴む動作が不可能<br>
-     ２号機・・・足のカーブが強すぎて掴みづらい<br>
-     ３号機・・・足の太さもカーブの具合も完璧</div>
 <br>
 <br>
-<div>
-<img src="./images/スクリーンショット 2024-10-11 11.57.28.png" width="40%">　<img src="./images/スクリーンショット 2024-10-11 11.57.08.png" width="40%">
+<h3>実際の使用感</h3>
+<p>実際に掴むことも当然可能である。掴み心地は意外といい感じだが、腕の部分が若干邪魔になる。</p>
+<img src="./images/IMG_2696.jpeg" width="100%">
 <br>
-（制作段階でのスクリーンショット）</div>
 <br>
-<h2>実際の使用感</h2>
-<div>実際につかむことも当然可能である。
-  つかみ心地は意外といい感じだが、腕の部分が若干邪魔になる。</div>
-<br>
-<div><img src="./images/IMG_2696.jpeg" width="30%"></div>
-<br>
-<div><strong>実際に使ってみたい方は以下のリンクからどうぞ。</strong><br>
+<p>実際に使ってみたい方は以下のリンクよりどうぞ</p>
 <a href="./files/human v3.stl" target="_blank"><strong>完成品のstlファイル</strong></a>
+</section>
 <br>
 <br>
-<br>
-</body>
-</html>
