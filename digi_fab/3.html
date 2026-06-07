@@ -1,114 +1,178 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-<div class="bg_pattern Paper_v2"></div>
-<style>.bg_pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fff;
-    z-index: -1;
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
   }
-  .Paper_v2 {
-    background-image:
-      repeating-linear-gradient(to bottom,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
-    
-      repeating-linear-gradient(to right,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
   }
-  </style>
-    <style>*{text-align: center;}</style>
-    <style>h2 {
-        color: #505050;/*文字色*/
-        padding: 0.5em;/*文字周りの余白*/
-        display: inline-block;/*おまじない*/
-        line-height: 1.3;/*行高*/
-        background: #dbebf8;/*背景色*/
-        vertical-align: middle;
-        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
-      }
-      
-      h2:before {
-        content: '●';
-        color: white;
-        margin-right: 8px;
-      }</style>
-      <style>*{font-size: large;}</style>
-      <style>h1{font-size: x-large};</style>
-      <style>h2{font-size: larger};</style>
-    <title>Design for others</title>
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 50px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
 </head>
-<h1>Assignment No.3　Design for Others</h1>
-<h2>日常の中の問題</h2>
-<div>私たちがテーマとした問題は、<strong>「座席確保問題」</strong>である。<br>
-カフェなどに行った際、服などで座席を確保するという行為は誰もが経験したことがあるだろう。<br>
-この行為は「日本人同士」なら通用するが、<strong>外国人</strong>には通用しない。<br>
-ましてや、外国に行った際に私物で座席を確保すると盗難などの可能性がある。<br>
-そこで、自分は<strong>店側が備えておけるようなもの</strong>を作ることにした。<br>
-店のものであれば盗難に遭う心配もなくなる。<br>
-</div>
+
+<div class="wrapper">
+
+  <header>
+    <h1>Design for Others</h1>
+    <nav>
+      <a href="../digi_fab/index.html">Back</a>
+      <a href="../doyolab/index.html">HOME</a>
+    </nav>
+  </header>
+
+  <section>
+    <h3>日常の中の問題</h3>
+    <p>私がテーマとした問題は、<strong>座席確保問題」</strong>である。カフェなどに行った際、服などを置き座席を確保するという行為は誰もが経験したことがあるだろう。
+      この行為は「日本人同士の暗黙の了解」であり、外国人には通用しないと私は考えた。さらには、海外に行った際に私物で座席を確保すると
+      盗難などの可能性も考えられるのではないだろうか。そこで、店側が備え付けて置けるような、<strong>何か座席確保の目印となるもの</strong>を作れないだろうかと私は考えた。
+    </p>
+    <br>
+    <h3>デザインを考える</h3>
+    <p>製作する際の条件として以下のものが挙げられた。<br>
+   <strong> ①海外の人にもわかりやすいようにイラストと英語を使用する <br>
+  ②日本人でもわかるような簡単な英語を使う<br>
+③カフェにも馴染みやすいようなおしゃれなデザイン<br>
+④大量生産しやすいようなデザイン</strong><br>
+これらを重視してデザインを考えていく。
+</p>
 <br>
-<h2>デザインを考える</h2>
-<div>何を制作するか考えた際にいくつか条件が出てきた。<br>
-  <br>
-<strong>①外国人にもわかりやすいようにイラストもしくは英語を使う<br>
-②日本人でもわかりやすいように簡単な英語を使う<br>
-③おしゃれなカフェにも馴染みやすいデザイン<br>
-④大量生産しやすいデザイン<br></strong>
+<h3>デザイン完成</h3>
+<img src="./images/スクリーンショット 2024-12-02 13.55.16.png" width="100%">
+<p>カフェでよく使用されるもので思い浮かんだのが、<strong>コースター</strong>であった。
+カフェのオシャレな雰囲気にも馴染むように、「ラテアート」をイメージしたデザインにした。
+</p>
 <br>
-これらを重視してデザインを考えていく。<br>
-</div>
+<h3>完成</h3>
+<img src="./images/IMG_3281.jpeg" width="50%"><img src="./images/IMG_3282.jpeg" width="50%">
+<p>MDFボードとの相性がよく、オシャレな雰囲気になった。かなりいい感じ。時間があれば、裏面に「FREE」という文字を印刷し、
+  ひっくり返せば「空いてます」という意味をもつようにしたかった。しかし、今回は間に合わなかったので断念。
+</p>
 <br>
-<h2>デザイン完成</h2>
-<div>できたデザインが下の画像の通り<br>
-  <br>
-<img src="./images/スクリーンショット 2024-12-02 13.55.16.png" width="40%"><br>
-<br>
-カフェなら置いてあるであろう<strong>コースター</strong>をベースに作ることにした。<br>
-おしゃれな雰囲気にも馴染むように<strong>「ラテアート」</strong>をイメージしたデザインにした。<br>
-また、使った英語も<strong>「Not FREE」</strong>という簡単なもので、誰でもわかりやすいようにした。<br></div>
-<br>
-<h2>完成</h2>
-<div>
-  <img src="./images/IMG_3281.jpeg" width="25%">　<img src="./images/IMG_3282.jpeg" width="25%">
-  <br>
-  MDFボードと相性が良くて洒落た感じになった。かなり良い。<br>
-  <br>
-  使用機器：レーザー加工機　材料：MDFボード　2.5mm<br>
-  <br>
-  ほんとは裏面に「FREE」という文字を入れて空席アピールもできるようにしたかったが時間がなかった。<br>
-  カフェで実際に使用している写真も時間があれば掲載する予定。
-</div>
-<br>
-<h2>データ</h2>
-<div>
-  <a href="./files/reserved　コースター.stl">Reserved　コースター</a>
-</div>
-<br>
-<h2>班のメンバー</h2><br>
-<div>ニックネームを聞き忘れたから後日記載予定。</div>
+<h3>おわりに</h3>
+<p>使用機器：レーザーカッター　　材料：MDFボード　厚さ2.5mm<br>
+<a href="./files/reserved　コースター.stl"><strong>データはこちら</strong></a></p>
 <br>
 <br>
-<body>
-</html>
+  </section>
