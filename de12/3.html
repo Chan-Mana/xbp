@@ -1,89 +1,173 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-<div class="bg_pattern Paper_v2"></div>
-<style>.bg_pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fff;
-    z-index: -1;
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
   }
-  .Paper_v2 {
-    background-image:
-      repeating-linear-gradient(to bottom,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
-    
-      repeating-linear-gradient(to right,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
   }
-  </style>
-    <style>*{text-align: center;}</style>
-    <style>h2 {
-        color: #505050;/*文字色*/
-        padding: 0.5em;/*文字周りの余白*/
-        display: inline-block;/*おまじない*/
-        line-height: 1.3;/*行高*/
-        background: #dbebf8;/*背景色*/
-        vertical-align: middle;
-        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
-      }
-      
-      h2:before {
-        content: '●';
-        color: white;
-        margin-right: 8px;
-      }</style>
-      <style>*{font-size: large;}</style>
-      <style>h1{font-size: x-large};</style>
-      <style>h2{font-size: larger};</style>
-    <title>Pythonで作るゲーム</title>
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 100px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
 </head>
+
 <body>
-<h1>Assignment No.3</h1>
-<h2>Python作るゲーム</h2>
-<h3>XBPアドベンチャー</h3>
-<div><strong>「君はXBPの新入生だ。立ちはだかる先生たちを倒して単位を獲得しよう。」</strong></div><br>
-<h2>ルール・詳細説明</h2>
-<div>先に謝っておきます。先生方ごめんなさい。<br>
-このゲームはじゃんけんのソースコードを元に作成した<strong>RPG(?)風ゲーム</strong>です。<br>
-プレイヤーは武器として<strong>「Fusion」「Python」「Cura」</strong>を持っています。<br>
-登場する先生方も同じ武器を持っており、じゃんけんと同じルールで戦います。<br>
-勝ち負けは以下の通りです。</div><br>
-<div><strong>Fusion（グー）> Python（チョキ）<br>
-Python（チョキ）> Cura（パー）<br>
-Cura（パー）> Fusion（グー）</strong></div><br>
-<div>覚えていなくても勝ち負けは出るので安心してください。</div>
-<div>ステージは<strong>3つ</strong>あり、難易度に若干違いがあります。<br>
-１、２ステージ目はあいこでも先へ進むことができます。<br>
-最終ステージは<strong>勝ちのみ</strong>が先へ進める条件となっています。</div><br>
-<h2>注意点</h2>
-<div>武器選択の際に「Fusion」「Python」「Cura」のどれかを入力すると思いますが、<br>
-<strong>初めは大文字にして、選択肢の表記のまま入力してください。<br>
-違う表記で入力するとその場でゲームが終わります。</strong></div><br>
-<h2>ソースコード</h2><br>
-貼り付けがうまくいかなかったのでファイルを<a href="./files/game.py">ダウンロード</a>してください
+
+<div class="wrapper">
+
+  <header>
+    <h1>Pythonで作るゲーム</h1>
+    <nav>
+      <a href="../de12/index.html">Project Note</a>
+      <a href="../doyolab/index.html">HOME</a>
+    </nav>
+  </header>
+
+  <section>
+    <h3>XBPアドベンチャー</h3>
+    <p><strong>「君はXBPの新入生だ。立ちはだかる先生たちを倒して単位を獲得しよう。」</strong><br>
+    <br>
+  <strong>ルール・詳細説明</strong><br>
+このゲームはじゃんけんのソースコードを元に作成したRPG風（？）ゲームだ。
+プレイヤーは武器として「Fusion」「Python」「Cura」を持っている。
+登場する先生方も同じ武器を持っており、じゃんけんと同じルールで戦う。
+勝ち負けは以下の通りである。</p>
 <br>
+<p>
+  Fusion（グー）> Python（チョキ）<br>
+  Python（チョキ）> Cura（パー）<br>
+  Cura（パー） > Fusion（グー）
+</p>
 <br>
-</body>
-</html>
+<p>ステージは3つあり難易度に若干の違いがある。1、2ステージ目はあいこでも先へ進むことができる。
+  最終ステージは勝ちのみが先へ進める条件となっている。
+</p>
+<br>
+<p><strong>注意点</strong><br>
+武器選択の際に「Fusion」「Python」「Cura」のどれかを入力すると思うが、初めは大文字にして選択肢の表記のまま入力すること。
+違う表記で入力するとその場でゲームが終了する。</p>
+<br>
+<p><strong>ソースコード</strong><br>
+貼り付けがうまくいかなかったのでファイルを<a href="./files/game.py">ダウンロード</a>してください</p>
+  </section>
