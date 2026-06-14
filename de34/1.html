@@ -1,95 +1,171 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-<div class="bg_pattern Paper_v2"></div>
-<style>.bg_pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fff;
-    z-index: -1;
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
   }
-  .Paper_v2 {
-    background-image:
-      repeating-linear-gradient(to bottom,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
-    
-      repeating-linear-gradient(to right,
-        transparent 25px,
-        rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-        transparent 27px,  transparent 51px, 
-        rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-        transparent 53px,  transparent 77px, 
-        rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-        transparent 79px,  transparent 103px, 
-        rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-        transparent 105px,  transparent 129px, 
-        rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
   }
-  </style>
-    <style>*{text-align: center;}</style>
-    <style>h2 {
-        color: #505050;/*文字色*/
-        padding: 0.5em;/*文字周りの余白*/
-        display: inline-block;/*おまじない*/
-        line-height: 1.3;/*行高*/
-        background: #dbebf8;/*背景色*/
-        vertical-align: middle;
-        border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
-      }
-      
-      h2:before {
-        content: '●';
-        color: white;
-        margin-right: 8px;
-      }</style>
-      <style>*{font-size: large;}</style>
-      <style>h1{font-size: x-large};</style>
-      <style>h2{font-size: larger};</style>
-    <title>第1回</title>
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 100px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
 </head>
+
 <body>
-<h1 style="text-align: center;">Assignment No.1</h1>
-<h2>プログラムでモノを動かす</h2>
-<div>
-<h3>1,プログラムでモノを動かしているものにはどんなものがあるか？</h3><br>
-<img src="./images/IMG_0083.JPG" width="30%">
+
+<div class="wrapper">
+
+  <header>
+    <h1>プログラムでものを動かす</h1>
+    <nav>
+      <a href="../de34/index.html">Project Note</a>
+      <a href="../doyolab/index.html">HOME</a>
+    </nav>
+  </header>
+
+  <section>
+    <h3>プログラムでものを動かす</h3>
+    <img src="./images/IMG_0083.JPG" width="100%">
+<p>
+プログラムによって動いているものはどんなものがあるか。何かを感知して動作するものには基本プログラムが組み込まれていると考えた。
+（例）自動ドア、車の自動ブレーキ、街灯など。
+また、一定の周期で同じ動作をくりかえす装置もプログラムが組み込まれていると推測した。
+（例）信号機、チャイムなど。
+</p>
 <br>
 <br>
-<div><strong>何かを感知して動作するもの</strong>には基本プログラムが組み込まれていると考えた。<br>
-自動ドア、車の自動ブレーキ、街灯など<br>
-<br>
-また、<strong>一定の周期で同じ動作を繰り返す</strong>装置もプログラムが組み込まれていると推測した。<br>
-信号機、チャイムなど<br>
-<br>
-</div>
-<br>
-<h3>2,プログラミング的な思考で手順を説明</h3><br>
-<img src="./images/IMG_0082.PNG" width="30%">
+<h3>プログラミング的な思考で手順を説明</h3>
+<img src="./images/IMG_0082.PNG" width="70%">
 <br>
 <br>
-<h3>3,プログラミングで何ができる？</h3>
-<img src="./images/IMG_0894.jpg" width="50%">
-<div>自分の願望を詰め込んでみた。<br>
-流れは下の通り。<br>
-<br>
-部屋のパソコンで音楽ソフトを開く。<br>
-それを検知したコンピュータが、カーテンを自動で閉め、同時に部屋の照明を落とす。<br>
-その後スピーカーの電源が自動的にONになる。<br>
-あっという間に部屋が<strong>ホームシアター</strong>に変化するのだ。<br>
-音楽付きにはたまらない設備が完成した。</div>
 <br>
 <br>
-</body>
-</html>
+<h3>プログラミングで何ができる？</h3>
+<img src="./images/IMG_0894.jpg" width="100%">
+<p>自分の願望を詰め込んでみた。流れは以下の通り。<br>
+部屋のパソコンで音楽ソフトを開く。それを検知したコンピューターがカーテンを自動で閉め、同時に部屋の照明を落とす。
+その後スピーカーの電源が自動でONになる。あっという間に部屋がホームシアターに変化するのである。
+音楽好きにはたまらない設備が完成した。</p>
+  </section>
+
