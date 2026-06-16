@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Project Note</title>
+
+<style>
+@font-face {
+  font-family: Moderne Sans;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 背景（ぼかし → クリア） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../images/back2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.05);
+  z-index: -2;
+  animation: bgClear 2.5s ease forwards;
+}
+
+/* 暗いフィルター */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* 全体コンテンツ */
+.wrapper {
+  opacity: 0;
+  filter: blur(12px);
+  animation: contentClear 2.5s ease forwards;
+}
+
+/* アニメーション */
+@keyframes bgClear {
+  to {
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes contentClear {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* レイアウト */
+header {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: 0.4s;
+  padding: 10px 0;
+}
+
+header:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+h1 {
+  font-family: Moderne Sans, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+}
+
+section:first-of-type {
+  padding-top: 120px; /* ヘッダー分＋余白 */
+}
+
+section {
+  padding: 100px 20px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 5vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+h3 {
+  font-family: Georgia, serif;
+  font-size: 3vmin;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 100;
+}
+
+p {
+  line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <header>
+    <h1>Project Note</h1>
+    <nav>
+      <a href="../de34/index.html">Project Note</a>
+      <a href="../doyolab/index.html">HOME</a>
+    </nav>
+  </header>
+
+ <section>
+  <h3>概要</h3>
+  <p>
+    Arduinoというマイコンボードを使い、自由制作の課題が提示された。
+    条件はArduinoを使うこと、そしてIoTを活用すること。
+    グループで話し合った結果、私たちはエアガンでの射撃とダーツを組み合わせたゲームを作ることにした。
+    また、IoTを活用するために、QRコードを読み取ると点数の確認ができる仕組みを作るという方向性で一致した。
+    イメージスケッチは以下の通りである。
+  </p>
+  <img src="./images/IMG_0331.jpg" width="50%"><img src="./images/IMG_0332.jpg" width="50%"><br>
+  <br>
+  <br>
+  <br>
+  <h3>衝撃の感知方法について</h3>
+  <p>
+    本物のダーツがどのような仕組みで感知しているのか調べてみたところ、難しい計算式を用いて計算しているということがわかった。
+    これでは難しくて再現が不可能なので、簡略化した感知方法を考えてみることにした。
+    その結果思いついた案が以下の通りである。
+  </p>
+  <img src="./images/IMG_0333.jpg" width="100%">
+  <p>オレンジの断面のように得点を区切り過ぎてしまうとセンサーでの感知が難しくなってしまう。
+    そこで、縦線での区切りをなくし、円形で得点を区切ることにした。
+    今回は圧力センサーというものを使って制作していく。
+  </p>
+  <br>
+  <br>
+  <h3>接続</h3>
+  <p>
+    圧力センサー1つをarduinoと接続してみることにした。正しい繋ぎ方を見つけるのにはかなり苦戦したが
+    最終的に以下の通りに落ち着いた。また、ソースコードは画像右の通りでシリアルモニターに数値が送られるようになった。
+    左の電子機器がarduino、おたまじゃくしのようなものが圧力センサー、その下の黄色いものが配線を分岐させるブレッドボードである。
+  </p>
+  <img src="./images/IMG_1E4B8A11-B98B-4C19-A6F6-395334A0842E.jpeg" width="50%"><img src="./images/スクリーンショット 2025-06-08 20.23.50.png" width="50%"><br>
+  <br>
+  <br>
+  <br>
+  <h3>QRコード生成</h3>
+  <p>
+    シリアルモニターの数値からQRコードを生成する方法を探る。<br>
+    コードが生成されるまでのプロセスは、<br>
+    <br>
+    センサーが感知する→arduinoが数値化→スコア化してPythonに送信→PythonがQRコード作成である。<br>
+    <br>
+    この一連の流れを行うソースコードをChatGPTの力も借りて生成した。以下の通りである。
+  </p>
+  <img src="./images/スクリーンショット 2025-06-08 20.35.51.png" width="100%">
+  <p>なお、シリアルポートの特定には以前の講義で使用したserial_serch.pyを使用した。
+    スコアをまだ割り振っていないため、適当な数値が出ているがしっかりとpythonが動き、finder上に
+    QRコードが生成された。
+  </p>
+  <img src="./images/スクリーンショット 2025-06-08 20.55.47.png" width="50%"><img src="./images/スクリーンショット 2025-06-08 20.57.29.png" width="50%"><br>
+  <br>
+  <br>
+  <br>
+  <h3>5000円の損失</h3>
+  <p>
+    arduinoとセンサーの接続、そしてQRコードの作成までの一連の流れはうまくいった。
+    しかし、圧力センサーをブレッドボードに直で刺すと短すぎてダーツボードに取り付けができない。
+    これは把握済みであったため当初は配線を半田付けして延長しようと考えていた。
+    しかし、いざ半田付けをしてみるとセンサーの足が溶けてしまい、不可能であった。
+    いくつかセンサーが犠牲になってしまった。本来の予定では、センサーを12個使用する予定であったが、
+    予備も含めて15個注文した。
+    <br>
+    <br>
+    しかし、注文した次の日にピエゾ素子というものを見つけた。これは圧力センサーよりも安価で感度も期待できる。
+    さらに、配線が半田付けされているため自分たちで犠牲を出す心配もない。
+    圧力センサーの注文をキャンセルしようとしたが、すでに発送の準備がされていた。不要なセンサーが発送され、5000円の損失が起きてしまった。<br>
+    <br>
+    圧力センサー作戦は中止し、ピエゾ素子を15個使う方向へとシフトをした。<br>
+    （画像右：足が溶けたセンサー　左：ピエゾ素子）
+  </p>
+  <img src="./images/IMG_0520.jpg" width="50%"><img src="./images/IMG_0519.jpg" width="50%"><br>
+  <br>
+  <br>
+  <br>
+  <h3>接続</h3>
+  <p>
+    ここで問題となるのが、arduinoに接続できるピエゾは6つまでであるということである。自分たちは15個のピエゾを接続したい。
+    考えられる方法は以下の通り。<br>
+    <br>
+    ・ブレッドボードを3個使い、それぞれをジャンパ線で繋ぐ。<br>
+    結果）配線がごちゃごちゃになり、なぜかうまくいかない。<br>
+    <br>
+    ・マルチプレクサを使う。<br>
+    結果）配線方法が難しい。<br>
+    <br>
+    ・大きいブレッドボードを使う。<br>
+    結果）これに落ち着いた。最終的に使うピエゾは10個になった。<br>
+    <br>
+    arduinoのA0-A5端子までを使い、それぞれをブレッドボードで分岐させた。
+    アナログ端子1つに対してピエゾを2つ繋ぐようにした。同じ点数を感知するピエゾが2つ存在するということである。
+  </p>
+  </section>
